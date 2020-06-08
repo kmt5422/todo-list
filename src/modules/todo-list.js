@@ -1,5 +1,6 @@
-export default function createTodoList(todoListName) {
+export default function createTodoList(todoListName, todoListId) {
     let name = todoListName;
+    let id = todoListId;
     let priorityMap = {high: 1, medium: 2, low: 3};
     let todos = [];
 
@@ -10,6 +11,7 @@ export default function createTodoList(todoListName) {
 
     let getName = () => name;
     let getTodos = () => todos;
+    let getId = () => id;
     
-    return {addTodo, getName, getTodos};
+    return {addTodo, getName, getTodos, getId};
 }

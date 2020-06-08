@@ -28,6 +28,9 @@ function loadPage() {
 
         // Bring up form to create new Todo List
         contentDiv.removeChild(pageHeadingDiv);
+        if(todoListsDiv) {
+            contentDiv.removeChild(todoListsDiv);
+        }
         showCreateTodoListForm();
     });
 
@@ -56,12 +59,30 @@ function showCreateTodoListForm() {
             event.preventDefault();
 
             // Add a new Todo List
+            let todoListName = createTodoListForm.childNodes[1].value;
+            createTodoListForm.childNodes[1].value = '';
+            todoLists.push(createTodoList(todoListName, `todo-list-${todoLists.length}`));
+
+            if (!todoListsDiv) {
+                todoListsDiv = document.createElement('div');
+            }
+            let todoListDiv = document.createElement('div');
+            let todoListHeading = document.createElement('h2');
+            let numberOfTodosP = document.createElement('p');
+
+            todoListHeading.textContent = todoListName;
+            numberOfTodosP.textContent = `Number of Todos: 0`;
+
+            todoListDiv.appendChild(todoListHeading);
+            todoListDiv.appendChild(numberOfTodosP);
+
+            todoListsDiv.appendChild(todoListDiv);
 
             contentDiv.removeChild(createTodoListForm);
-            contentDiv.appendChild(pageHeadingDiv)
+            contentDiv.appendChild(pageHeadingDiv);
+            contentDiv.appendChild(todoListsDiv);
         })
-
-        contentDiv.appendChild(createTodoListForm);
     }
-    createTodoListForm.classList.add('show-form');
+    contentDiv.appendChild(createTodoListForm);
+    //createTodoListForm.classList.add('show-form');
 }

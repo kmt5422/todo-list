@@ -23,7 +23,7 @@ let renderer = (function() {
             todoListDiv.appendChild(todoDiv);
         }
 
-        document.querySelector('.container').appendChild(todoListDiv);
+        return todoListDiv;
     }
 
     return {renderTodoList};
