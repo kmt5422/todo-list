@@ -69,20 +69,52 @@ function showCreateTodoListForm() {
             let todoListDiv = document.createElement('div');
             let todoListHeading = document.createElement('h2');
             let numberOfTodosP = document.createElement('p');
+            let addTodoBtn = document.createElement('button');
 
+            todoListDiv.id = todoLists[todoLists.length -1].getId();
             todoListHeading.textContent = todoListName;
             numberOfTodosP.textContent = `Number of Todos: 0`;
+            addTodoBtn.textContent = 'Add a New Todo'
 
             todoListDiv.appendChild(todoListHeading);
             todoListDiv.appendChild(numberOfTodosP);
+            todoListDiv.appendChild(addTodoBtn);
 
             todoListsDiv.appendChild(todoListDiv);
 
             contentDiv.removeChild(createTodoListForm);
             contentDiv.appendChild(pageHeadingDiv);
             contentDiv.appendChild(todoListsDiv);
+
+            // Event listeners
+            addTodoBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                // Bring up createTodo form
+                showCreateTodoForm();
+            });
+
         })
     }
     contentDiv.appendChild(createTodoListForm);
     //createTodoListForm.classList.add('show-form');
+}
+
+function showCreateTodoForm() {
+    let formDiv = document.createElement('div');
+    let formHeading = document.createElement('h2');
+    formHeading.textContent = 'Work in progress';
+
+    formDiv.appendChild(formHeading);
+
+    detachNodes();
+    contentDiv.appendChild(formDiv);
+}
+
+function detachNodes() {
+    let child = contentDiv.lastElementChild;
+    while(child) {
+        contentDiv.removeChild(child);
+        child = contentDiv.lastElementChild;
+    }
 }
