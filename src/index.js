@@ -11,6 +11,7 @@ const todoLists = [];
 
 loadPage();
 
+// Delete this function after the new loadpage function is finished
 function loadPage() {
     pageHeadingDiv = document.createElement('div');
 
