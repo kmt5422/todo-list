@@ -37,6 +37,15 @@ function loadPage() {
     contentDiv.appendChild(pageHeadingDiv);
 }
 
+function loadPage() {
+    pageHeadingDiv = renderer.createPageHeadingDiv();
+    renderer.addTodoListEvent.subscribe(detachNodes);
+    renderer.addTodoListEvent.subscribe(attachToContentDiv(createTodoListForm));
+
+    createTodoListForm = renderer.createTodoListForm();
+    // Subscribe functions that show the create todo form to the renderer.createTodoList event
+}
+
 function showCreateTodoListForm() {
     if (!createTodoListForm) {
         // Create the form
@@ -117,4 +126,10 @@ function detachNodes() {
         contentDiv.removeChild(child);
         child = contentDiv.lastElementChild;
     }
+}
+
+function attachToContentDiv(elementDiv) {
+    return () => {
+        contentDiv.appendChild(elementDiv);
+    };
 }
