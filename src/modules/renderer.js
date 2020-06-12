@@ -4,6 +4,7 @@ let renderer = (function() {
     // Events
     const addTodoListEvent = createEvent();
     const createTodoListEvent = createEvent();
+    const addTodoEvent = createEvent();
 
     function createPageHeadingDiv() {
         let pageHeadingDiv = document.createElement('div');
@@ -47,29 +48,25 @@ let renderer = (function() {
     }
 
 
-    function createTodoListDiv(todoList) {
+    function createTodoListDiv(name, id) {
         // DOM Elements
         let todoListDiv = document.createElement('div');
+        let todoListHeading = document.createElement('h2');
+        let numberOfTodos = document.createElement('p');
+        let addTodoBtn = document.createElement('button');
 
+        todoListDiv.setAttribute('id', `todo-list-${id}`);
+        todoListHeading.textContent = name;
+        numberOfTodos.textContent = 'Number of Todos: 0';
+        addTodoBtn.textContent = 'Add Todo';
+        addTodoBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            addTodoEvent.emit();
+        });
 
-        let todos = todoList.getTodos();
-        for(let todo of todos) {
-            let todoDiv = document.createElement('div');
-            let todoH2 = document.createElement('h2');
-            let todoDateP = document.createElement('p');
-            let todoDescP = document.createElement('p');
-
-            todoDiv.classList.add(`priority-${todo.getPriority()}`);
-            todoH2.textContent = todo.getTitle();
-            todoDateP.textContent = todo.getDueDate();
-            todoDescP.textContent = todo.getDesc();
-
-            todoDiv.appendChild(todoH2);
-            todoDiv.appendChild(todoDateP);
-            todoDiv.appendChild(todoDescP);
-
-            todoListDiv.appendChild(todoDiv);
-        }
+        todoListDiv.appendChild(todoListHeading);
+        todoListDiv.appendChild(numberOfTodos);
+        todoListDiv.appendChild(addTodoBtn);
 
         return todoListDiv;
     }
