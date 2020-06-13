@@ -7,6 +7,8 @@ const contentDiv = document.querySelector('.container');
 let createTodoListForm;
 let pageHeadingDiv;
 let todoListsDiv;
+let createTodoForm;
+let currentIdState;
 const todoLists = [];
 
 loadPage();
@@ -16,19 +18,44 @@ function loadPage() {
     contentDiv.appendChild(pageHeadingDiv);
     createTodoListForm = renderer.createTodoListForm();
     todoListsDiv = document.createElement('div');
+    createTodoForm = renderer.createTodoForm();
 
+    // Subscribe functions that show the create todo form to the renderer.createTodoList event
     renderer.addTodoListEvent.subscribe(detachNodes);
     renderer.addTodoListEvent.subscribe(attachToContentDiv(createTodoListForm));
 
-    // Subscribe functions that show the create todo form to the renderer.createTodoList event
     renderer.createTodoListEvent.subscribe(detachNodes);
     renderer.createTodoListEvent.subscribe(attachToContentDiv(pageHeadingDiv));
     renderer.createTodoListEvent.subscribe(attachToContentDiv(todoListsDiv));
     renderer.createTodoListEvent.subscribe(() => {
         let name = createTodoListForm.childNodes[1].value;
         let id = todoListsDiv.childNodes.length;
+        currentIdState = id;
         createTodoListForm.childNodes[1].value = '';
         todoListsDiv.appendChild(renderer.createTodoListDiv(name, id));
+    });
+
+    renderer.addTodoEvent.subscribe(detachNodes);
+    renderer.addTodoEvent.subscribe(attachToContentDiv(createTodoForm));
+
+    renderer.todoCreatedEvent.subscribe(detachNodes);
+    renderer.todoCreatedEvent.subscribe(attachToContentDiv(pageHeadingDiv));
+    renderer.todoCreatedEvent.subscribe(attachToContentDiv(todoListsDiv));
+    renderer.todoCreatedEvent.subscribe(() => {
+        for(let todoListDiv of todoListsDiv.childNodes) {
+            if (todoListDiv.id == `todo-list-${currentIdState}`) {
+                let title = createTodoForm.childNodes[2].textContent.value;
+                let desc = createTodoForm.childNodes[4].value;
+                let dueDate = createTodoForm.childNodes[6].value;
+                let priority = createTodoForm.childNodes[8].value;
+
+                todoListsDiv.appendChild(renderer.createTodoElement(title, desc, dueDate, priority));
+
+                createTodoForm.childNodes[2].value = '';
+                createTodoForm.childNodes[4].value = '';
+                createTodoForm.childNodes[6].value = '';
+            }
+        }
     });
 }
 
