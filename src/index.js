@@ -1,6 +1,5 @@
-import createTodo from './modules/todo';
-import createTodoList from './modules/todo-list';
 import renderer from './modules/renderer';
+import appState from './modules/state';
 
 // DOM Elements
 const contentDiv = document.querySelector('.container');
@@ -9,7 +8,6 @@ let pageHeadingDiv;
 let todoListsDiv;
 let createTodoForm;
 let currentIdState;
-const todoLists = [];
 
 loadPage();
 
@@ -43,13 +41,13 @@ function loadPage() {
     renderer.todoCreatedEvent.subscribe(attachToContentDiv(todoListsDiv));
     renderer.todoCreatedEvent.subscribe(() => {
         for(let todoListDiv of todoListsDiv.childNodes) {
-            if (todoListDiv.id == `todo-list-${currentIdState}`) {
+            if (todoListDiv.id == appState.getCurrentTodoListId()) {
                 let title = createTodoForm.childNodes[2].textContent.value;
                 let desc = createTodoForm.childNodes[4].value;
                 let dueDate = createTodoForm.childNodes[6].value;
                 let priority = createTodoForm.childNodes[8].value;
 
-                todoListsDiv.appendChild(renderer.createTodoElement(title, desc, dueDate, priority));
+                todoListDiv.appendChild(renderer.createTodoElement(title, desc, dueDate, priority));
 
                 createTodoForm.childNodes[2].value = '';
                 createTodoForm.childNodes[4].value = '';

@@ -1,5 +1,5 @@
 import createEvent from './event'
-import createTodo from './todo';
+import appState from './state';
 
 let renderer = (function() {
     // Events
@@ -63,6 +63,7 @@ let renderer = (function() {
         addTodoBtn.textContent = 'Add Todo';
         addTodoBtn.addEventListener('click', (event) => {
             event.preventDefault();
+            appState.setCurrentTodoListId(todoListDiv.id);
             addTodoEvent.emit();
         });
 
