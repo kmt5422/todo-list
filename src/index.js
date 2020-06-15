@@ -26,7 +26,7 @@ function loadPage() {
     renderer.createTodoListEvent.subscribe(attachToContentDiv(pageHeadingDiv));
     renderer.createTodoListEvent.subscribe(attachToContentDiv(todoListsDiv));
     renderer.createTodoListEvent.subscribe(() => {
-        let name = createTodoListForm.childNodes[1].value;
+        let name = createTodoListForm.childNodes[0].childNodes[1].value;
         let id = todoListsDiv.childNodes.length;
         currentIdState = id;
         createTodoListForm.childNodes[1].value = '';

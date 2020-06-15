@@ -23,11 +23,14 @@ let renderer = (function() {
         pageHeadingDiv.appendChild(pageHeadingH1);
         pageHeadingDiv.appendChild(addTodoListBtn);
 
+        pageHeadingDiv.setAttribute('id', 'page-heading');
+
         return pageHeadingDiv;
     }
 
     function createTodoListForm() {
         let formDiv = document.createElement('div');
+        let labelFieldDiv = document.createElement('div');
         let fieldLabel = document.createElement('label');
         let nameField = document.createElement('input');
         let submitBtn = document.createElement('button');
@@ -42,9 +45,14 @@ let renderer = (function() {
             createTodoListEvent.emit();
         });
 
-        formDiv.appendChild(fieldLabel);
-        formDiv.appendChild(nameField);
+        labelFieldDiv.appendChild(fieldLabel);
+        labelFieldDiv.appendChild(nameField);
+        labelFieldDiv.classList.add('label-field-div');
+
+        formDiv.appendChild(labelFieldDiv);
         formDiv.appendChild(submitBtn);
+
+        formDiv.setAttribute('id', 'create-todoList-form');
 
         return formDiv;
     }
@@ -70,6 +78,8 @@ let renderer = (function() {
         todoListDiv.appendChild(todoListHeading);
         todoListDiv.appendChild(numberOfTodos);
         todoListDiv.appendChild(addTodoBtn);
+
+        todoListDiv.classList.add('todo-list');
 
         return todoListDiv;
     }
