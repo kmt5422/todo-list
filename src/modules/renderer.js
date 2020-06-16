@@ -133,17 +133,35 @@ let renderer = (function() {
             todoCreatedEvent.emit();
         });
 
+        // Create label-field divs
+        let nameLabelFieldDiv = document.createElement('div');
+        let descLabelFieldDiv = document.createElement('div');
+        let dateLabelFieldDiv = document.createElement('div');
+        let priorityLabelFieldDiv = document.createElement('div');
+
+        nameLabelFieldDiv.classList.add('label-field-div');
+        descLabelFieldDiv.classList.add('label-field-div');
+        dateLabelFieldDiv.classList.add('label-field-div');
+        priorityLabelFieldDiv.classList.add('label-field-div');
+
+        nameLabelFieldDiv.appendChild(createTodoTitleLabel);
+        nameLabelFieldDiv.appendChild(createTodoTitleField);
+        descLabelFieldDiv.appendChild(createTodoDescLabel);
+        descLabelFieldDiv.appendChild(createTodoDescField);
+        dateLabelFieldDiv.appendChild(createTodoDueDateLabel);
+        dateLabelFieldDiv.appendChild(createTodoDueDateField);
+        priorityLabelFieldDiv.appendChild(createTodoPriorityLabel);
+        priorityLabelFieldDiv.appendChild(createTodoPriorityField);
+
         // Add all of the element to the createTodoDiv
         createTodoDiv.appendChild(createTodoH2);
-        createTodoDiv.appendChild(createTodoTitleLabel);
-        createTodoDiv.appendChild(createTodoTitleField);
-        createTodoDiv.appendChild(createTodoDescLabel);
-        createTodoDiv.appendChild(createTodoDescField);
-        createTodoDiv.appendChild(createTodoDueDateLabel);
-        createTodoDiv.appendChild(createTodoDueDateField);
-        createTodoDiv.appendChild(createTodoPriorityLabel);
-        createTodoDiv.appendChild(createTodoPriorityField);
+        createTodoDiv.appendChild(nameLabelFieldDiv);
+        createTodoDiv.appendChild(descLabelFieldDiv);
+        createTodoDiv.appendChild(dateLabelFieldDiv);
+        createTodoDiv.appendChild(priorityLabelFieldDiv);
         createTodoDiv.appendChild(createTodoSubmitBtn);
+
+        createTodoDiv.setAttribute('id', 'create-todo-form');
 
         return createTodoDiv;
     }
@@ -164,6 +182,9 @@ let renderer = (function() {
         todoDiv.appendChild(todoDescP);
         todoDiv.appendChild(todoDueDateP);
         todoDiv.appendChild(todoPriorityP);
+
+        todoDiv.classList.add('todo');
+        todoDiv.classList.add(`todo-${todoPriority}`);
 
         return todoDiv;
     }

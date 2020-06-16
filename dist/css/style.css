@@ -24,9 +24,29 @@ button {
     padding: 2rem 1rem;
 }
 
+#create-todo-form {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    width: 60%;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+#create-todo-form > h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.5rem;
+    background-color: navy;
+    color: white;
+}
+
 .label-field-div {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0.5rem auto;
 }
 
 .todo-list {
@@ -51,4 +71,27 @@ button {
     font-size: 1.2rem;
     text-align:center;
     margin-top: 0.5rem;
+}
+
+.todo {
+    width: 30%;
+    border-style: solid;
+    border-width: 2px;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    color: white;
+    background-color: navy;
+    display: flex;
+    flex-direction: column;
+}
+
+.todo > h2 {
+    text-align: center;
+    color: black;
+    background-color: white;
+    font-size: 1.2rem;
+}
+
+.todo > p {
+    margin-top: 0.25rem;
 }

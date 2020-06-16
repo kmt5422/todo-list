@@ -42,16 +42,16 @@ function loadPage() {
     renderer.todoCreatedEvent.subscribe(() => {
         for(let todoListDiv of todoListsDiv.childNodes) {
             if (todoListDiv.id == appState.getCurrentTodoListId()) {
-                let title = createTodoForm.childNodes[2].textContent.value;
-                let desc = createTodoForm.childNodes[4].value;
-                let dueDate = createTodoForm.childNodes[6].value;
-                let priority = createTodoForm.childNodes[8].value;
+                let title = createTodoForm.childNodes[1].childNodes[1].value;
+                let desc = createTodoForm.childNodes[2].childNodes[1].value;
+                let dueDate = createTodoForm.childNodes[3].childNodes[1].value;
+                let priority = createTodoForm.childNodes[4].childNodes[1].value;
 
                 todoListDiv.appendChild(renderer.createTodoElement(title, desc, dueDate, priority));
 
-                createTodoForm.childNodes[2].value = '';
-                createTodoForm.childNodes[4].value = '';
-                createTodoForm.childNodes[6].value = '';
+                createTodoForm.childNodes[1].childNodes[1].value = '';
+                createTodoForm.childNodes[2].childNodes[1].value = '';
+                createTodoForm.childNodes[3].childNodes[1].value = '';
             }
         }
     });
