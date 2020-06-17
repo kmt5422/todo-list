@@ -47,7 +47,7 @@ function loadPage() {
                 let dueDate = createTodoForm.childNodes[3].childNodes[1].value;
                 let priority = createTodoForm.childNodes[4].childNodes[1].value;
 
-                todoListDiv.appendChild(renderer.createTodoElement(title, desc, dueDate, priority));
+                todoListDiv.lastChild.appendChild(renderer.createTodoElement(title, desc, dueDate, priority));
 
                 createTodoForm.childNodes[1].childNodes[1].value = '';
                 createTodoForm.childNodes[2].childNodes[1].value = '';

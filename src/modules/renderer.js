@@ -64,6 +64,7 @@ let renderer = (function() {
         let todoListHeading = document.createElement('h2');
         let numberOfTodos = document.createElement('p');
         let addTodoBtn = document.createElement('button');
+        let todosDiv = document.createElement('div');
 
         todoListDiv.setAttribute('id', `todo-list-${id}`);
         todoListHeading.textContent = name;
@@ -78,8 +79,10 @@ let renderer = (function() {
         todoListDiv.appendChild(todoListHeading);
         todoListDiv.appendChild(numberOfTodos);
         todoListDiv.appendChild(addTodoBtn);
+        todoListDiv.appendChild(todosDiv);
 
         todoListDiv.classList.add('todo-list');
+        todosDiv.classList.add('todos');
 
         return todoListDiv;
     }

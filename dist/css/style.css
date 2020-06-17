@@ -73,8 +73,13 @@ button {
     margin-top: 0.5rem;
 }
 
+.todo-list > .todos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 0.25rem;
+}
+
 .todo {
-    width: 30%;
     border-style: solid;
     border-width: 2px;
     padding: 0.5rem 1rem;
