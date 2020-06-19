@@ -48,6 +48,7 @@ function loadPage() {
                 let priority = createTodoForm.childNodes[4].childNodes[1].value;
 
                 todoListDiv.lastChild.appendChild(renderer.createTodoElement(title, desc, dueDate, priority));
+                todoListDiv.childNodes[1].textContent = `Number of Todos: ${todoListDiv.lastChild.childNodes.length}`;
 
                 createTodoForm.childNodes[1].childNodes[1].value = '';
                 createTodoForm.childNodes[2].childNodes[1].value = '';

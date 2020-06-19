@@ -128,6 +128,7 @@ let renderer = (function() {
         createTodoDescLabel.setAttribute('for', 'todo-form-desc-field');
         createTodoDescField.setAttribute('id', 'todo-form-desc-field');
         createTodoDueDateLabel.setAttribute('for', 'todo-form-date-field');
+        createTodoDueDateField.setAttribute('type', 'date');
         createTodoDueDateField.setAttribute('id', 'todo-form-date-field');
 
         // Submit button event listener
