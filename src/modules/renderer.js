@@ -176,19 +176,26 @@ let renderer = (function() {
         let todoDescP = document.createElement('p');
         let todoDueDateP = document.createElement('p');
         let todoPriorityP = document.createElement('p');
+        let removeTodoSpan = document.createElement('span');
 
         todoH2.textContent = todoTitle;
         todoDescP.textContent = todoDesc;
         todoDueDateP.textContent = todoDueDate;
         todoPriorityP.textContent = todoPriority;
+        removeTodoSpan.textContent = 'Remove Todo';
+
+        removeTodoSpan.classList.add('remove-todo-span');
 
         todoDiv.appendChild(todoH2);
         todoDiv.appendChild(todoDescP);
         todoDiv.appendChild(todoDueDateP);
         todoDiv.appendChild(todoPriorityP);
+        todoDiv.appendChild(removeTodoSpan);
 
         todoDiv.classList.add('todo');
         todoDiv.classList.add(`todo-${todoPriority}`);
+
+        todoDiv.setAttribute('id', appState.createIdFromTodoCount());
 
         return todoDiv;
     }
