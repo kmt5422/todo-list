@@ -7,6 +7,7 @@ let renderer = (function() {
     const createTodoListEvent = createEvent();
     const addTodoEvent = createEvent();
     const todoCreatedEvent = createEvent();
+    const todoRemovedEvent = createEvent();
 
     function createPageHeadingDiv() {
         let pageHeadingDiv = document.createElement('div');
@@ -197,13 +198,19 @@ let renderer = (function() {
 
         todoDiv.setAttribute('id', appState.createIdFromTodoCount());
 
+        removeTodoSpan.addEventListener('click', (event) => {
+            appState.setCurrentTodoId(todoDiv.id);
+            todoRemovedEvent.emit();
+        });
+
         return todoDiv;
     }
 
     return {addTodoListEvent,
         createTodoListEvent,
         addTodoEvent,
-        todoCreatedEvent, 
+        todoCreatedEvent,
+        todoRemovedEvent, 
         createPageHeadingDiv, 
         createTodoListForm, 
         createTodoListDiv,

@@ -56,6 +56,12 @@ function loadPage() {
             }
         }
     });
+
+    renderer.todoRemovedEvent.subscribe(() => {
+        let todo = document.getElementById(appState.getCurrentTodoId());
+        todo.parentElement.parentElement.childNodes[1].textContent = `Number of Todos: ${todo.parentElement.childNodes.length - 1}`;
+        todo.parentElement.removeChild(todo);
+    });
 }
 
 function showCreateTodoForm() {
