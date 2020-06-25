@@ -8,6 +8,7 @@ let renderer = (function() {
     const addTodoEvent = createEvent();
     const todoCreatedEvent = createEvent();
     const todoRemovedEvent = createEvent();
+    const todoListDropdownEvent = createEvent();
 
     function createPageHeadingDiv() {
         let pageHeadingDiv = document.createElement('div');
@@ -66,6 +67,7 @@ let renderer = (function() {
         let numberOfTodos = document.createElement('p');
         let addTodoBtn = document.createElement('button');
         let todosDiv = document.createElement('div');
+        let dropdownSpan = document.createElement('span');
 
         todoListDiv.setAttribute('id', `todo-list-${id}`);
         todoListHeading.textContent = name;
@@ -76,10 +78,18 @@ let renderer = (function() {
             appState.setCurrentTodoListId(todoListDiv.id);
             addTodoEvent.emit();
         });
+        dropdownSpan.textContent = String.fromCharCode(43); // '+' character
+        dropdownSpan.addEventListener('click', () => {
+            appState.setCurrentTodoListId(todoListDiv.id);
+            todoListDropdownEvent.emit();
+        });
+
+        todosDiv.classList.add('hidden');
 
         todoListDiv.appendChild(todoListHeading);
         todoListDiv.appendChild(numberOfTodos);
         todoListDiv.appendChild(addTodoBtn);
+        todoListDiv.appendChild(dropdownSpan);
         todoListDiv.appendChild(todosDiv);
 
         todoListDiv.classList.add('todo-list');
