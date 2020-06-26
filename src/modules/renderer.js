@@ -94,6 +94,7 @@ let renderer = (function() {
 
         todoListDiv.classList.add('todo-list');
         todosDiv.classList.add('todos');
+        todosDiv.classList.add('todos-hidden');
 
         return todoListDiv;
     }
@@ -220,7 +221,8 @@ let renderer = (function() {
         createTodoListEvent,
         addTodoEvent,
         todoCreatedEvent,
-        todoRemovedEvent, 
+        todoRemovedEvent,
+        todoListDropdownEvent, 
         createPageHeadingDiv, 
         createTodoListForm, 
         createTodoListDiv,

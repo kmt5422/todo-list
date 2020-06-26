@@ -62,6 +62,11 @@ function loadPage() {
         todo.parentElement.parentElement.childNodes[1].textContent = `Number of Todos: ${todo.parentElement.childNodes.length - 1}`;
         todo.parentElement.removeChild(todo);
     });
+
+    renderer.todoListDropdownEvent.subscribe(() => {
+        let todoList = document.getElementById(appState.getCurrentTodoListId());
+        todoList.lastElementChild.classList.toggle('todos-hidden');
+    });
 }
 
 function showCreateTodoForm() {

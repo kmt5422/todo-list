@@ -78,7 +78,14 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 0.25rem;
+    transition: height 2s ease;
 }
+
+.todo-list > .todos-hidden {
+    height: 0;
+    overflow: hidden;
+}
+
 
 .todo-list > span {
     display: block;
