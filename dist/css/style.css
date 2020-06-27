@@ -78,11 +78,12 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 0.25rem;
-    transition: height 2s ease;
+    transition: max-height 2s linear;
+    max-height: 1000px;
 }
 
 .todo-list > .todos-hidden {
-    height: 0;
+    max-height: 0;
     overflow: hidden;
 }
 
