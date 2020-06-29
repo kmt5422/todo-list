@@ -78,13 +78,14 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 0.25rem;
+    justify-items: center;
     transition: max-height 2s linear;
-    max-height: 1000px;
+    max-height: 500px;
+    overflow: hidden;
 }
 
 .todo-list > .todos-hidden {
-    max-height: 0;
-    overflow: hidden;
+    max-height: 0px;
 }
 
 
@@ -100,6 +101,7 @@ button {
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+    z-index: 1;
 }
 
 .todo-list > span:hover {
@@ -118,6 +120,7 @@ button {
     display: flex;
     flex-direction: column;
     position: relative;
+    width: 60%;
 }
 
 .todo-High {
