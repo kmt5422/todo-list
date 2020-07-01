@@ -40,10 +40,16 @@ let renderer = (function() {
         fieldLabel.textContent = 'Todo List Name: ';
         fieldLabel.setAttribute('for', 'name-field');
         nameField.setAttribute('id', 'name-field');
+        nameField.required = true;
         submitBtn.textContent = 'Create Todo List';
 
         submitBtn.addEventListener('click', (event) => {
             event.preventDefault();
+            if (nameField.value === '') {
+                nameField.style.backgroundColor = 'pink';
+                return;
+            }
+            nameField.style.backgroundColor = 'white';
             createTodoListEvent.emit();
         });
 
@@ -137,15 +143,27 @@ let renderer = (function() {
         
         createTodoTitleLabel.setAttribute('for', 'todo-form-title-field');
         createTodoTitleField.setAttribute('id', 'todo-form-title-field');
+        createTodoTitleField.required = true;
         createTodoDescLabel.setAttribute('for', 'todo-form-desc-field');
         createTodoDescField.setAttribute('id', 'todo-form-desc-field');
+        createTodoDescField.required = true;
         createTodoDueDateLabel.setAttribute('for', 'todo-form-date-field');
         createTodoDueDateField.setAttribute('type', 'date');
         createTodoDueDateField.setAttribute('id', 'todo-form-date-field');
+        createTodoDueDateField.required = true;
 
         // Submit button event listener
         createTodoSubmitBtn.addEventListener('click', (event) => {
             event.preventDefault();
+            for(let element of [createTodoTitleField, createTodoDescField, createTodoDueDateField]) {
+                if(element.value === '') {
+                    element.style.backgroundColor = 'pink';
+                    return;
+                }
+                else {
+                    element.style.backgroundColor = 'white';
+                }
+            }
             todoCreatedEvent.emit();
         });
 
