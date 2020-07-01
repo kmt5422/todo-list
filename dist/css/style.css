@@ -124,17 +124,17 @@ button {
 }
 
 .todo-High {
-    border-color: red;
+    border-color: black;
     border-width: 6px;
     color: white;
-    background-color: black;
+    background-color: red;
 }
 
 .todo-Medium {
-    border-color: yellow;
+    border-color: darkgreen;
     border-width: 3px;
     color: white;
-    background-color: darkslategray;
+    background-color: greenyellow;
 }
 
 .todo > h2 {
