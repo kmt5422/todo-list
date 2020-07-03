@@ -16,6 +16,7 @@ function loadPage() {
     contentDiv.appendChild(pageHeadingDiv);
     createTodoListForm = renderer.createTodoListForm();
     todoListsDiv = document.createElement('div');
+    contentDiv.appendChild(todoListsDiv);
     createTodoForm = renderer.createTodoForm();
 
     // Subscribe functions that show the create todo form to the renderer.createTodoList event
@@ -67,6 +68,9 @@ function loadPage() {
         let todoList = document.getElementById(appState.getCurrentTodoListId());
         todoList.lastElementChild.classList.toggle('todos-hidden');
     });
+
+    // Create Default todoList
+    todoListsDiv.appendChild(renderer.createTodoListDiv("Default List", 0));
 }
 
 function showCreateTodoForm() {
