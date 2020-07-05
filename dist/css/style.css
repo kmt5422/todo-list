@@ -112,6 +112,21 @@ button:hover {
 .todo-list > span:hover {
     cursor: pointer;
     background-color: teal;
+    animation: hoverAnimation 1s ease-out;
+}
+
+@keyframes hoverAnimation {
+    0% {
+        trnasform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(90deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
 }
 
 .todo {
