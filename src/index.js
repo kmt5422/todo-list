@@ -67,6 +67,7 @@ function loadPage() {
     renderer.todoListDropdownEvent.subscribe(() => {
         let todoList = document.getElementById(appState.getCurrentTodoListId());
         todoList.lastElementChild.classList.toggle('todos-hidden');
+        todoList.lastElementChild.previousSibling.classList.toggle('clicked');
     });
 
     // Create Default todoList
