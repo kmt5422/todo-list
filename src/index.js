@@ -28,7 +28,7 @@ function loadPage() {
     renderer.createTodoListEvent.subscribe(attachToContentDiv(todoListsDiv));
     renderer.createTodoListEvent.subscribe(() => {
         let name = createTodoListForm.childNodes[0].childNodes[1].value;
-        let id = todoListsDiv.childNodes.length;
+        let id = appState.createIdFromTodoListCount();
         currentIdState = id;
         createTodoListForm.childNodes[1].value = '';
         todoListsDiv.appendChild(renderer.createTodoListDiv(name, id));
@@ -70,8 +70,13 @@ function loadPage() {
         todoList.lastElementChild.previousSibling.classList.toggle('clicked');
     });
 
+    renderer.removeTodoListEvent.subscribe(() => {
+        const currentTodoList = document.getElementById(appState.getCurrentTodoListId());
+        todoListsDiv.removeChild(currentTodoList);
+    });
+
     // Create Default todoList
-    todoListsDiv.appendChild(renderer.createTodoListDiv("Default List", 0));
+    todoListsDiv.appendChild(renderer.createTodoListDiv("Default List", appState.createIdFromTodoListCount()));
 }
 
 function showCreateTodoForm() {

@@ -94,7 +94,7 @@ button:hover {
 }
 
 
-.todo-list > span {
+.todo-list > span.drop-down {
     display: block;
     text-align: center;
     border-style: none;
@@ -109,7 +109,7 @@ button:hover {
     z-index: 1;
 }
 
-.todo-list > span:hover {
+.todo-list > span.drop-down:hover {
     cursor: pointer;
     background-color: teal;
     animation: hoverAnimation 1s ease-out;
@@ -145,6 +145,13 @@ button:hover {
         color: white;
         transform: rotate(45deg);
     }
+}
+
+.todo-list > span.delete {
+    color:white;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
 }
 
 .todo {

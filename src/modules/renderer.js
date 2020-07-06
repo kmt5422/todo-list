@@ -9,6 +9,7 @@ let renderer = (function() {
     const todoCreatedEvent = createEvent();
     const todoRemovedEvent = createEvent();
     const todoListDropdownEvent = createEvent();
+    const removeTodoListEvent = createEvent();
 
     function createPageHeadingDiv() {
         let pageHeadingDiv = document.createElement('div');
@@ -74,6 +75,7 @@ let renderer = (function() {
         let addTodoBtn = document.createElement('button');
         let todosDiv = document.createElement('div');
         let dropdownSpan = document.createElement('span');
+        let deleteSpan = document.createElement('span');
 
         todoListDiv.setAttribute('id', `todo-list-${id}`);
         todoListHeading.textContent = name;
@@ -89,18 +91,27 @@ let renderer = (function() {
             appState.setCurrentTodoListId(todoListDiv.id);
             todoListDropdownEvent.emit();
         });
+        deleteSpan.textContent = 'X';
+        deleteSpan.addEventListener('click', () => {
+            appState.setCurrentTodoListId(todoListDiv.id);
+            removeTodoListEvent.emit();
+        });
 
         todosDiv.classList.add('hidden');
 
         todoListDiv.appendChild(todoListHeading);
         todoListDiv.appendChild(numberOfTodos);
         todoListDiv.appendChild(addTodoBtn);
+        todoListDiv.appendChild(deleteSpan);
         todoListDiv.appendChild(dropdownSpan);
         todoListDiv.appendChild(todosDiv);
 
         todoListDiv.classList.add('todo-list');
         todosDiv.classList.add('todos');
         todosDiv.classList.add('todos-hidden');
+        deleteSpan.classList.add('delete');
+        dropdownSpan.classList.add('drop-down');
+        
 
         return todoListDiv;
     }
@@ -240,12 +251,13 @@ let renderer = (function() {
         addTodoEvent,
         todoCreatedEvent,
         todoRemovedEvent,
-        todoListDropdownEvent, 
+        todoListDropdownEvent,
+        removeTodoListEvent, 
         createPageHeadingDiv, 
         createTodoListForm, 
         createTodoListDiv,
         createTodoForm,
-        createTodoElement
+        createTodoElement,
     };
 })();
 
