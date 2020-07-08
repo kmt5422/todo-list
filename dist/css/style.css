@@ -154,6 +154,11 @@ button:hover {
     top: 0.5rem;
 }
 
+.todo-list >span.delete:hover {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
 .todo {
     border-style: solid;
     border-width: 2px;

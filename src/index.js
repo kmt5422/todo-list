@@ -79,17 +79,6 @@ function loadPage() {
     todoListsDiv.appendChild(renderer.createTodoListDiv("Default List", appState.createIdFromTodoListCount()));
 }
 
-function showCreateTodoForm() {
-    let formDiv = document.createElement('div');
-    let formHeading = document.createElement('h2');
-    formHeading.textContent = 'Work in progress';
-
-    formDiv.appendChild(formHeading);
-
-    detachNodes();
-    contentDiv.appendChild(formDiv);
-}
-
 function detachNodes() {
     let child = contentDiv.lastElementChild;
     while(child) {
