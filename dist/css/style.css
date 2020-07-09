@@ -181,10 +181,10 @@ button:hover {
 }
 
 .todo-Medium {
-    border-color: darkgreen;
+    border-color: purple;
     border-width: 3px;
     color: white;
-    background-color: greenyellow;
+    background-color: darkblue;
 }
 
 .todo > h2 {
