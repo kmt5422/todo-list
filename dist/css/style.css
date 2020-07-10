@@ -174,10 +174,10 @@ button:hover {
 }
 
 .todo-High {
-    border-color: black;
+    border-color: rgb(255, 0, 0);
     border-width: 6px;
     color: white;
-    background-color: red;
+    background-color: rgb(252, 117, 39);
 }
 
 .todo-Medium {
