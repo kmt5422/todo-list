@@ -1,3 +1,7 @@
+body {
+    background-color: grey;
+}
+
 button {
     border-style: none;
     display: block;
