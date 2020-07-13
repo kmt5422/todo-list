@@ -8,3 +8,7 @@ Improvements:
 - The renderer module could use some work.
 - Change the entire layout of the project
   - Find a style to stick with
+
+
+TODOs:
+ - Make classes to implement todos and todolists.
